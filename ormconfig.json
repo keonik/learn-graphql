@@ -1,0 +1,11 @@
+{
+    "type": "postgres",
+    "port": 5432,
+    "database": "graphqldb",
+    "synchronize": true,
+    "logging": true,
+    "host": "apollo_pg_db",
+    "entities": ["./src/models/*.ts"],
+    "username": "postgres",
+    "password": "password"
+}

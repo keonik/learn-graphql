@@ -1,0 +1,11 @@
+# Dependencies
+/node_modules
+
+# Misc
+.DS_Store
+.idea
+
+npm-debug.log*
+
+# sonar
+.scannerwork

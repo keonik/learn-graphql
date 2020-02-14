@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    db:
+        container_name: 'apollo_pg_db'
+        build: ./src/db
+        restart: unless-stopped
+        ports:
+          - "5432:5432"
+
+    server:
+        build: .
+        depends_on:
+            - "db"
+        ports:
+            - "9000:9000"
+        volumes:
+            - .:/usr/src/apollo-api
+        links:
+            - db:db
+        restart: unless-stopped

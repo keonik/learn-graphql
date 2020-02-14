@@ -1,0 +1,53 @@
+{
+    "name": "graphql-api",
+    "version": "0.0.1",
+    "description": "Template for creating an API with NodeJS, Apollo Server, and TypeORM",
+    "scripts": {
+        "format": "prettier --write 'src/**/*' && eslint --fix src",
+        "lint": "eslint src/**/* --quiet",
+        "security": "npm audit & npm outdated & depcheck --ignores='lint-staged,pretty-quick,husky,nodemon,ts-node,typescript'",
+        "start": "nodemon -w src --ext ts --exec ts-node -r tsconfig-paths/register src/index.ts",
+        "test": "echo \"Error: no test specified\" && exit 0",
+        "release": "standard-version"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "apollo-server": "^2.10.0",
+        "pg": "^7.18.1",
+        "reflect-metadata": "^0.1.13",
+        "type-graphql": "^0.17.6",
+        "typeorm": "^0.2.22"
+    },
+    "devDependencies": {
+        "depcheck": "^0.9.2",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-import": "^2.20.1",
+        "eslint-plugin-prettier": "^3.1.2",
+        "husky": "^4.2.3",
+        "lint-staged": "^10.0.7",
+        "nodemon": "^2.0.2",
+        "prettier": "^1.19.1",
+        "pretty-quick": "^2.0.1",
+        "standard-version": "^7.1.0",
+        "ts-node": "^8.6.2",
+        "typescript": "^3.7.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx,scss,sass}": [
+            "pretty-quick --staged",
+            "npm run format",
+            "git add"
+        ],
+        "*.{json,css,md}": [
+            "pretty-quick --staged",
+            "git add"
+        ]
+    }
+}
