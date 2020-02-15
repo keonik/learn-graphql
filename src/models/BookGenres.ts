@@ -1,12 +1,12 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { Entity, BaseEntity, ManyToOne, JoinColumn, PrimaryColumn } from 'typeorm';
+import { Field, ID } from 'type-graphql';
 import { Book } from './Book';
 import { Genre } from './Genre';
 
-@Entity({ name: 'BookGenres' })
+@Entity({ name: 'bookGenres' })
 export class BookGenres extends BaseEntity {
     @Field(() => ID)
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     bookId: string;
 
     @ManyToOne(() => Book)
@@ -14,7 +14,7 @@ export class BookGenres extends BaseEntity {
     book: Book;
 
     @Field(() => ID)
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     genreId: string;
 
     @ManyToOne(() => Genre)

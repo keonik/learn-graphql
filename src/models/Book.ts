@@ -2,7 +2,7 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinCol
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Genre } from 'models/Genre';
 
-@Entity({ name: 'Books' })
+@Entity({ name: 'books' })
 @ObjectType()
 export class Book extends BaseEntity {
     @Field(() => ID)
@@ -27,11 +27,11 @@ export class Book extends BaseEntity {
 
     @Field(() => Date)
     @Column({ default: new Date() })
-    last_modified: Date;
+    lastModified: Date;
 
     @ManyToMany(() => Genre)
     @JoinTable({
-        name: 'BookGenres',
+        name: 'bookGenres',
         joinColumn: { name: 'genreId', referencedColumnName: 'id' },
         inverseJoinColumn: { name: 'bookId', referencedColumnName: 'id' },
     })

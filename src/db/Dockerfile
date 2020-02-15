@@ -1,7 +1,7 @@
 FROM postgres
 
 # Copy sql to init db
-# COPY ./init_db.sql /docker-entrypoint-initdb.d/1-init_db.sql
+COPY ./init_db.sql /docker-entrypoint-initdb.d/1-init_db.sql
 
 # Set env vars
 ENV POSTGRES_USER=postgres

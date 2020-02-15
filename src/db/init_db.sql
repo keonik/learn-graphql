@@ -2,7 +2,7 @@ CREATE TABLE libraries (
     id              serial PRIMARY KEY,
     name            varchar(500),
     description     varchar(1000),
-    last_modified   timestamp with time zone
+    "lastModified"   timestamp with time zone
 );
 
 INSERT INTO libraries
@@ -10,16 +10,18 @@ INSERT INTO libraries
 VALUES
     ('My Library','Collection of literary classics.');
 
-CREATE TABLE Books (
-    id              serial PRIMARY KEY,
-    title           varchar(500),
-    author          varchar(500),
-    description     varchar(1000),
-    published       timestamp with time zone,
-    last_modified   timestamp with time zone
+CREATE TABLE books
+(
+    id serial,
+    title character varying COLLATE pg_catalog."default" NOT NULL,
+    author character varying COLLATE pg_catalog."default" NOT NULL,
+    description character varying COLLATE pg_catalog."default" NOT NULL,
+    published timestamp without time zone NOT NULL,
+    "lastModified" timestamp without time zone NOT NULL DEFAULT '2020-02-15 05:08:15.915'::timestamp without time zone,
+    CONSTRAINT "PK_f3f2f25a099d24e12545b70b022" PRIMARY KEY (id)
 );
 
-INSERT INTO Books
+INSERT INTO books
     (title,author,description,published)
 VALUES
     ('Pride and Prejudice','Jane Austen','','1813-01-01T00:00:00Z'),
@@ -33,13 +35,16 @@ VALUES
     ('A Tale of Two Cities','Charles Dickens','','1859-01-01T00:00:00Z'),
     ('The Count of Monte Cristo','Alexandre Dumas','','1844-01-01T00:00:00Z');
 
-CREATE TABLE Genres (
-    id              serial PRIMARY KEY,
-    genre           varchar(250),
-    last_modified   timestamp with time zone
+
+CREATE TABLE genres
+(
+    id serial,
+    genre character varying COLLATE pg_catalog."default" NOT NULL,
+    "lastModified" timestamp without time zone DEFAULT '2020-02-15 05:08:15.914'::timestamp without time zone,
+    CONSTRAINT "PK_80ecd718f0f00dde5d77a9be842" PRIMARY KEY (id)
 );
 
-INSERT INTO Genres
+INSERT INTO genres
     (genre)
 VALUES
     ('Classic'),
@@ -56,14 +61,14 @@ VALUES
     ('Realistic Fiction'),
     ('Allegory');
 
-CREATE TABLE books_libraries (
+CREATE TABLE "booksLibraries" (
     id              serial PRIMARY KEY,
-    book_id         int REFERENCES books(id),
-    library_id      int REFERENCES libraries(id)
+    "bookId"         int REFERENCES books(id),
+    "libraryId"      int REFERENCES libraries(id)
 );
 
-INSERT INTO books_libraries
-    (book_id,library_id)
+INSERT INTO "booksLibraries"
+    ("bookId","libraryId")
 VALUES
     (1,1),
     (2,1),
@@ -76,14 +81,24 @@ VALUES
     (9,1),
     (10,1);
 
-CREATE TABLE BooksGenres (
-    id              serial PRIMARY KEY,
-    genre_id        int REFERENCES genres(id),
-    book_id         int REFERENCES books(id)
+
+CREATE TABLE "bookGenres"
+(
+    "bookId" integer NOT NULL,
+    "genreId" integer NOT NULL,
+    CONSTRAINT "PK_8415631105f18e3b80434072ae7" PRIMARY KEY ("bookId", "genreId"),
+    CONSTRAINT "FK_779818e2ed20f48505200fdcf06" FOREIGN KEY ("genreId")
+        REFERENCES public.genres (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT "FK_79eb294e17b3b511d2d3bf8d896" FOREIGN KEY ("bookId")
+        REFERENCES public.books (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 );
 
-INSERT INTO BooksGenres
-    (genre_id,book_id)
+INSERT INTO "bookGenres"
+    ("genreId","bookId")
 VALUES
     (1,1),
     (5,1),
