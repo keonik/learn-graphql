@@ -11,12 +11,13 @@ export class Genre extends BaseEntity {
 
     @Field(() => String)
     @Column()
-    genre: string;
+    name: string;
 
     @Field(() => Date)
     @Column({ default: new Date().toISOString(), nullable: true })
     lastModified?: Date;
 
+    @Field(() => Book)
     @ManyToMany(() => Book)
     @JoinTable({
         name: 'bookGenres',

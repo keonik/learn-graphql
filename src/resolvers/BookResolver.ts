@@ -2,16 +2,19 @@ import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import { Book } from 'models/Book';
 import { CreateBookInput } from '../inputs/CreateBookInput';
 import { UpdateBookInput } from '../inputs/UpdateBookInput';
+import { BookGenres } from 'models/BookGenres';
 
 @Resolver()
 export class BookResolver {
     @Query(() => Book)
-    book(@Arg('id') id: string) {
-        return Book.findOne(id);
+    async book(@Arg('id') id: string) {
+        const book = await Book.findOne({ relations: ['genres'], where: { id } });
+        if (!book) throw Error('Book not found!');
+        return book;
     }
     @Query(() => [Book])
     books() {
-        return Book.find();
+        return Book.find({ relations: ['genres'] });
     }
 
     @Mutation(() => Book)

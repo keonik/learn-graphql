@@ -7,12 +7,12 @@ import { UpdateBookInput } from 'inputs/UpdateBookInput';
 export class GenreResolver {
     @Query(() => Genre)
     genre(@Arg('id') id: string) {
-        return Genre.findOne(id);
+        return Genre.findOne({ relations: ['books'], where: { id } });
     }
 
     @Query(() => [Genre])
     genres() {
-        return Genre.find();
+        return Genre.find({ relations: ['books'] });
     }
 
     @Mutation(() => Genre)

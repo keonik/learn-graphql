@@ -1,6 +1,7 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinColumn, JoinTable } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinColumn, JoinTable, In } from 'typeorm';
+import { ObjectType, ID, Ctx, Field } from 'type-graphql';
 import { Genre } from 'models/Genre';
+import { BookGenres } from './BookGenres';
 
 @Entity({ name: 'books' })
 @ObjectType()
@@ -18,17 +19,18 @@ export class Book extends BaseEntity {
     author: string;
 
     @Field(() => String)
-    @Column()
+    @Column({ nullable: true, default: '' })
     description?: string;
 
     @Field(() => Date)
-    @Column()
+    @Column({ default: new Date().toISOString() })
     published?: Date;
 
     @Field(() => Date)
     @Column({ default: new Date() })
     lastModified: Date;
 
+    @Field(() => Genre)
     @ManyToMany(() => Genre)
     @JoinTable({
         name: 'bookGenres',
@@ -36,4 +38,19 @@ export class Book extends BaseEntity {
         inverseJoinColumn: { name: 'bookId', referencedColumnName: 'id' },
     })
     genres: Genre[];
+
+    // @Field(_ => [Genre], { nullable: false })
+    // async genres(@Ctx() ctx: any): Promise<ReadonlyArray<Genre>> {
+    //     return (async () => {
+    //         const bookGenres: BookGenres[] = await BookGenres.find({
+    //             relations: ['genre'],
+    //             where: { genreId: In(this.id) },
+    //         });
+    //         return await Promise.all(
+    //             bookIds.map(bookId =>
+    //                 bookGenres.filter(bookGenre => bookGenre.bookId === bookId).map(bookGenre => bookGenre.genre)
+    //             )
+    //         );
+    //     }).map(genre => new Genre(genre));
+    // }
 }
