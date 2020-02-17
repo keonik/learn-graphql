@@ -42,7 +42,7 @@ deploy:
     keep-history: true
     # We read the master branch
     on:
-        branch: slides
+        branch: master
     # Take the docs/ directory
     local-dir: docs
     # Publish to the gh-pages branch
