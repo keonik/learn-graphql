@@ -1,50 +1,17 @@
-python:
-    # We don't actually use the Travis Python, but this keeps it organized.
-    - "3.5"
-install:
-    # We do this conditionally because it saves us some downloading if the
-    # version is the same.
-    - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    - bash miniconda.sh -b -p $HOME/miniconda
-    - export PATH="$HOME/miniconda/bin:$PATH"
-    - hash -r
-    - conda config --set always_yes yes --set changeps1 no
-    - conda update -q conda
+language: node_js
+node_js: stable
 
-    # Useful for debugging any issues with conda
-    - conda info -a
+cache:
+    directories:
+        - node_modules
 
-    # Install Python and required packages.
-    - conda env create -f environment.yml
-    - source activate learn-graphql
+before_deploy:
+    - 'npm run docs:build'
 
-    # Install reveal-md
-    - npm install -g reveal-md
-
-
-script:
-    # Create the docs directory. This is where we will be publishing from
-    # (see the "deploy" section below).
-    - mkdir -p docs/
-    # Use reveal-md to generate static docs.
-    - reveal-md slides.md --static docs --disable-auto-open --theme solarized
-    # - cp -r assets docs/.
-    # Use reveal-md to generate PDF.
-    - reveal-md slides.md --disable-auto-open --theme solarized --print slides.pdf
-    - cp slides.pdf docs/.
-
-
-# This is an example to deploy to a branch through Travis.
 deploy:
     provider: pages
-    skip-cleanup: true
-    github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-    keep-history: true
-    # We read the master branch
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: docs
     on:
         branch: master
-    # Take the docs/ directory
-    local-dir: docs
-    # Publish to the gh-pages branch
-    target-branch: gh-pages
-    verbose: true
