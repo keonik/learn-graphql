@@ -3,7 +3,8 @@
     "version": "0.0.1",
     "description": "Template for creating an API with NodeJS, Apollo Server, and TypeORM",
     "scripts": {
-        "docs:build": "reveal-md slides.md --static docs --disable-auto-open --theme solarized && reveal-md slides.md --disable-auto-open --theme solarized --print slides.pdf && cp slides.pdf docs/. && rm slides.pdf",
+        "docs": "reveal-md slides.md --theme moon",
+        "docs:build": "reveal-md slides.md --static docs --disable-auto-open --theme moon && reveal-md slides.md --disable-auto-open --theme moon --print slides.pdf && cp slides.pdf docs/. && rm slides.pdf",
         "format": "prettier --write 'src/**/*' && eslint --fix src",
         "lint": "eslint src/**/* --quiet",
         "security": "npm audit & npm outdated & depcheck --ignores='lint-staged,pretty-quick,husky,nodemon,ts-node,typescript'",
