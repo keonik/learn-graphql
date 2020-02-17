@@ -30,7 +30,7 @@ export class Book extends BaseEntity {
     @Column({ default: new Date() })
     lastModified: Date;
 
-    @Field(() => Genre)
+    @Field(_ => [Genre], { nullable: false })
     @ManyToMany(() => Genre)
     @JoinTable({
         name: 'bookGenres',
@@ -38,19 +38,4 @@ export class Book extends BaseEntity {
         inverseJoinColumn: { name: 'bookId', referencedColumnName: 'id' },
     })
     genres: Genre[];
-
-    // @Field(_ => [Genre], { nullable: false })
-    // async genres(@Ctx() ctx: any): Promise<ReadonlyArray<Genre>> {
-    //     return (async () => {
-    //         const bookGenres: BookGenres[] = await BookGenres.find({
-    //             relations: ['genre'],
-    //             where: { genreId: In(this.id) },
-    //         });
-    //         return await Promise.all(
-    //             bookIds.map(bookId =>
-    //                 bookGenres.filter(bookGenre => bookGenre.bookId === bookId).map(bookGenre => bookGenre.genre)
-    //             )
-    //         );
-    //     }).map(genre => new Genre(genre));
-    // }
 }

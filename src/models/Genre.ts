@@ -1,6 +1,7 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinColumn, JoinTable } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import { ObjectType, Field, ID, Ctx } from 'type-graphql';
 import { Book } from 'models/Book';
+import { GraphQLContext } from './GraphQLContext';
 
 @Entity({ name: 'genres' })
 @ObjectType()
@@ -25,4 +26,8 @@ export class Genre extends BaseEntity {
         inverseJoinColumn: { name: 'genreId', referencedColumnName: 'id' },
     })
     books: Book[];
+    // @Field(_ => [Book], { nullable: false })
+    // async movies(@Ctx() ctx: GraphQLContext): Promise<ReadonlyArray<Book>> {
+    //     return await ctx.loaders.load(this.id);
+    // }
 }
