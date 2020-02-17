@@ -1,6 +1,8 @@
 # Learn GraphQL
 
-Template for creating an API with NodeJS, Apollo Server, and TypeORM
+Template project used to learn how to create an API with NodeJS, Apollo Server, type-graphql, and TypeORM
+
+[Slides](https://keonik.github.io/learn-graphql)
 
 ## Getting Started
 
