@@ -1,6 +1,6 @@
 # Learn GraphQL
 
-Template for creating an API with NodeJS, Apollo Server, and TypeORM
+Template project used to learn how to create an API with NodeJS, Apollo Server, type-graphql, and TypeORM
 
 ## Getting Started
 
@@ -9,3 +9,7 @@ Template for creating an API with NodeJS, Apollo Server, and TypeORM
 -   Run `docker-compose up` to run database and api
 
 -   Go to http://localhost:9000 and see the graphql playground to test queries and mutations
+
+## Previewing slide deck
+
+-   Install reveal-md locally - `npm i -g reveal-md`
