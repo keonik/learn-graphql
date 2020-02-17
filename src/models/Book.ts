@@ -1,7 +1,6 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinColumn, JoinTable, In } from 'typeorm';
-import { ObjectType, ID, Ctx, Field } from 'type-graphql';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import { ObjectType, ID, Field } from 'type-graphql';
 import { Genre } from 'models/Genre';
-import { BookGenres } from './BookGenres';
 
 @Entity({ name: 'books' })
 @ObjectType()
