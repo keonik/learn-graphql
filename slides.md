@@ -1,20 +1,32 @@
 ---
-title: How to suck less
+title: GraphQL
 ---
 
-# Learning Graphql
+## Learning Graphql
 
-John Fay
+### John Fay
 
-03/21/2020
+#### Follow along?
+
+###### 1. Have docker :|
+
+###### 2. `git clone git@github.com:keonik/react-ui-bb.git`
+
+###### 3. `cd learn-graphql`
+
+###### 4. `npm install`
+
+###### 5. `docker-compose up`
 
 ---
 
 ## Agenda
 
 -   What is graphql?
--   What problem does it solve?
--   What problems does it introduce?
+-   (Pros) What does it solve?
+-   (Cons) What issues does it cause?
+-   How will it help Mile Two
+-   How it will help your professional development
 -   Example
     -   Tools
         -   What
@@ -22,9 +34,63 @@ John Fay
 
 ---
 
-# What is Graphql?
+## About me
 
-Yes? ;)
+-   6 months of GraphQL exposure
+    -   1 month head down learning
+
+<img src="src/assets/JS_Learning.png" height="400"/>
+
+---
+
+### What is Graphql?
+
+A query language for your API
+
+[View the docs for yourself](https://graphql.org/)
+
+---
+
+<img src="https://cdn-media-1.freecodecamp.org/images/kc0xvmMmSaF46CcliELfM8B78hev9NT3QkDG" height="550"/>
+
+## Problem
+
+-   /posts
+-   You want to fetch posts but want likes with username and avatars
+-   tweak posts to include likes containing user objects
+-   But wait... here comes mobile
+    -   extra data
+    -   slowing things down
+-   two endpoints
+    -   with likes
+    -   without likes
+-   posts in database but likes in redis cache
+-   Good REST API's starting to show their limits
+
+---
+
+# What does it solve?
+
+-   Instead of having multiple "dumb" endpoints have one "smart" one that can take complex queries and turn it into what the client needs
+-   Having an assistant for your data
+    -   groceries
+    -   pizza
+    -   dry cleaning
+
+# What issues does it cause?
+
+-   Superfluous Database Calls (N+1 problem)
+    -   Solution: dataloader batching/caching
+-   All this relation ability causes performance issues
+    -   query caching
+-   Everything is a POST...
+    -   welp...
+
+---
+
+# What are the people saying?
+
+## [State of js 2019](https://2019.stateofjs.com/data-layer/graphql/)
 
 ---
 
