@@ -1,22 +1,24 @@
 ---
 title: GraphQL
+revealOptions:
+    transition: 'fade'
 ---
 
-## Learning Graphql
+## Learning Graphql Part 1: DX
 
-### John Fay
+#### John Fay
 
-#### Follow along?
+#### Want to follow along?
 
-###### 1. Have docker :|
+`keonik.github.io/learn-graphql`
 
-###### 2. `git clone git@github.com:keonik/react-ui-bb.git`
+```
+npx create-react-app gql-demo
 
-###### 3. `cd learn-graphql`
+npm install apollo-boost graphql @apollo/react-hooks
+```
 
-###### 4. `npm install`
-
-###### 5. `docker-compose up`
+Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/learn-graphql.git` 4. `cd learn-graphql` 5. `npm install` 6. `docker-compose up`
 
 ---
 
@@ -34,12 +36,17 @@ title: GraphQL
 
 ---
 
-## About me
-
--   6 months of GraphQL exposure
+<section>
+    <h2>About me</h2>
+    -   4 months of GraphQL exposure
+    <br/>
     -   1 month head down learning
+</section>
 
-<img src="src/assets/JS_Learning.png" height="400"/>
+<section data-transition="zoom">
+<h2>Learning new tech</h2>
+    <img src="./src/assets/JS_Learning.png" height="400"/>
+</section>
 
 ---
 
@@ -49,22 +56,34 @@ A query language for your API
 
 [View the docs for yourself](https://graphql.org/)
 
+Note: But first reference example
+
 ---
 
 <img src="https://cdn-media-1.freecodecamp.org/images/kc0xvmMmSaF46CcliELfM8B78hev9NT3QkDG" height="550"/>
 
 ## Problem
 
--   /posts
--   You want to fetch posts but want likes with username and avatars
--   tweak posts to include likes containing user objects
--   But wait... here comes mobile
-    -   extra data
-    -   slowing things down
+Note:
+
+Facebooks problem
+
+Explain what they want to do - data on left - preview of frontend on right
+
+Start with REST endpoint /posts to get an array of posts
+
+What you want is to fetch posts with likes and username and avatars of the likes
+
+So you tweak posts to include likes containing user objects
+
+This is normal
+
+...But wait, here comes mobile: problems: extra data ==> slowing things down
+
 -   two endpoints
     -   with likes
     -   without likes
--   posts in database but likes in redis cache
+-   posts in database but likes in redis cache(confusing, might remove)
 -   Good REST API's starting to show their limits
 
 ---
@@ -77,9 +96,11 @@ A query language for your API
     -   pizza
     -   dry cleaning
 
+---
+
 # What issues does it cause?
 
--   Superfluous Database Calls (N+1 problem)
+-   Superfluous Database Calls (N+1 problem go into more detail on n+1)
     -   Solution: dataloader batching/caching
 -   All this relation ability causes performance issues
     -   query caching
@@ -94,28 +115,46 @@ A query language for your API
 
 ---
 
-### Now lets show that awesome frontend DX(Developer Experience)
+<section data-background-image="https://media0.giphy.com/media/pUs87dXYIIrTy/source.gif">
+	<h3>Now lets show that awesome frontend DX(Developer Experience)</h3>
+</section>
 
-## ![Excited](https://media0.giphy.com/media/pUs87dXYIIrTy/source.gif)
+---
+
+<section>
+    <h2>Some other perks</h2>
+</section>
+
+<section>
+    <h3>Auto generated type safe responses</h3>
+    <img src="./src/assets/typed_response_data.png" width="800">
+</section>
 
 ---
 
 ### Things you'll need
 
--   `npx create-react-app gql-demo`
--   `npm install apollo-boost graphql @apollo/react-hooks`
+```
+npx create-react-app gql-demo
+npm install apollo-boost graphql @apollo/react-hooks
+```
 
-##### apollo-boost
+###### apollo-boost - Zero config apollo client
 
-Zero config apollo client
+###### @apollo/react-hooks - Hooks for your queries/mutations
 
-#### @apollo/react-hooks
+##### graphql - Write queries like so:
 
-Hooks for your queries/mutations
-
-#### graphql
-
-Write queries like so: gql``
+```
+gql`
+    query{
+        users(id: 1){
+            id
+            name
+        }
+    }
+`
+```
 
 ---
 
