@@ -34,6 +34,6 @@ services:
             dockerfile: Dockerfile
         volumes:
             - ./ui:/learn-graphql/ui
-            - ./ui/node_modules
+            - /ui/node_modules
         ports:
             - "3000:3000"

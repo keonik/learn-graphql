@@ -46,7 +46,7 @@ Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/lea
 
 <section data-transition="zoom">
     <h2>Learning new tech</h2>
-    <img src="https://github.com/keonik/learn-graphql/blob/master/src/assets/JS_Learning.png?raw=true" height="400"/>
+    <img src="https://github.com/keonik/learn-graphql/blob/master/assets/JS_Learning.png?raw=true" height="400"/>
 </section>
 
 ---
@@ -180,7 +180,7 @@ gql`
 
 <section>
     <h3>Auto generated type safe responses</h3>
-    <img src="https://github.com/keonik/learn-graphql/blob/master/src/assets/typed_response_data.png?raw=true" width="800">
+    <img src="https://github.com/keonik/learn-graphql/blob/master/assets/typed_response_data.png?raw=true" width="800">
 </section>
 
 ---
