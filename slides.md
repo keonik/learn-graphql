@@ -1,7 +1,7 @@
 ---
 title: GraphQL
 revealOptions:
-    transition: 'fade'
+    transition: 'slide'
 ---
 
 ## Learning Graphql Part 1: DX
@@ -38,14 +38,15 @@ Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/lea
 
 <section>
     <h2>About me</h2>
-    -   4 months of GraphQL exposure
+    -   5 months of GraphQL exposure
     <br/>
-    -   1 month head down learning
+    -   2 month head down learning
+    Note: Not gonna get some expert level detail but hopefully we all leave here with some new knowledge and an increased interest to use graphql
 </section>
 
 <section data-transition="zoom">
-<h2>Learning new tech</h2>
-    <img src="./src/assets/JS_Learning.png" height="400"/>
+    <h2>Learning new tech</h2>
+    <img src="https://github.com/keonik/learn-graphql/blob/master/src/assets/JS_Learning.png?raw=true" height="400"/>
 </section>
 
 ---
@@ -66,31 +67,39 @@ Note: But first reference example
 
 Note:
 
-Facebooks problem
+Common Facebook problem
 
-Explain what they want to do - data on left - preview of frontend on right
+data on left - preview of frontend on right
 
 Start with REST endpoint /posts to get an array of posts
 
-What you want is to fetch posts with likes and username and avatars of the likes
+But now you need user data to get this
 
-So you tweak posts to include likes containing user objects
+So you tweak the posts endpoint to include likes containing user objects
 
-This is normal
+This is normal in the REST architecture
 
 ...But wait, here comes mobile: problems: extra data ==> slowing things down
 
 -   two endpoints
     -   with likes
     -   without likes
--   posts in database but likes in redis cache(confusing, might remove)
--   Good REST API's starting to show their limits
+
+Even though this is a simple example even Good REST API's starting to show their limits
+
+---
+
+### What is Graphql?
+
+A query language for your API
+
+[View the docs for yourself](https://graphql.org/)
 
 ---
 
 # What does it solve?
 
--   Instead of having multiple "dumb" endpoints have one "smart" one that can take complex queries and turn it into what the client needs
+-   Instead of having multiple "simple" endpoints, we have one "smart" endpoint that can take complex queries and turn it into what the client needs
 -   Having an assistant for your data
     -   groceries
     -   pizza
@@ -98,14 +107,16 @@ This is normal
 
 ---
 
-# What issues does it cause?
+## What issues does it cause?
 
 -   Superfluous Database Calls (N+1 problem go into more detail on n+1)
     -   Solution: dataloader batching/caching
 -   All this relation ability causes performance issues
     -   query caching
 -   Everything is a POST...
-    -   welp...
+    -   not taking advantage of http methods and their features
+
+Note: - REST works - scalable - well known
 
 ---
 
@@ -115,19 +126,24 @@ This is normal
 
 ---
 
-<section data-background-image="https://media0.giphy.com/media/pUs87dXYIIrTy/source.gif">
-	<h3>Now lets show that awesome frontend DX(Developer Experience)</h3>
-</section>
+## Quick Explanation of the structure
+
+### Queries
+
+    GET
+
+    useQuery, useLazyQuery
+
+### Mutations
+
+    PUT, POST, DELETE
+
+    useMutation
 
 ---
 
-<section>
-    <h2>Some other perks</h2>
-</section>
-
-<section>
-    <h3>Auto generated type safe responses</h3>
-    <img src="./src/assets/typed_response_data.png" width="800">
+<section data-background-image="https://media0.giphy.com/media/pUs87dXYIIrTy/source.gif">
+	<h3>Now lets show that awesome frontend DX(Developer Experience)</h3>
 </section>
 
 ---
@@ -158,9 +174,22 @@ gql`
 
 ---
 
-# Now onto the API work
+<section>
+    <h2>Some other perks</h2>
+</section>
+
+<section>
+    <h3>Auto generated type safe responses</h3>
+    <img src="https://github.com/keonik/learn-graphql/blob/master/src/assets/typed_response_data.png?raw=true" width="800">
+</section>
 
 ---
+
+## The End of Part 1. Stay tuned for API work!
+
+---
+
+# Learn Graphql Part 2: API time!
 
 ### Things you'll need
 

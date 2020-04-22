@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
+        "baseUrl": "src/",
         "target": "es5",
         "module": "commonjs",
         "strict": true,
@@ -9,6 +9,6 @@
         "emitDecoratorMetadata": true,
         "strictPropertyInitialization": false
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "**/*.{spec,test}.{ts,tsx}"]
+    "include": ["src/"],
+    "exclude": ["node_modules/", "**/*.{spec,test}.{ts,tsx}"]
 }

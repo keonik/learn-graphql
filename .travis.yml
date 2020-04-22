@@ -3,9 +3,10 @@ node_js: stable
 
 cache:
     directories:
-        - node_modules
+        - ./api/node_modules
 
 before_deploy:
+    - 'cd api'
     - 'npm run docs:build'
 
 deploy:

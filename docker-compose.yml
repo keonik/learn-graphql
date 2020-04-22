@@ -1,21 +1,39 @@
-version: '3'
+version: '3.7'
 
 services:
     db:
-        container_name: 'apollo_pg_db'
-        build: ./src/db
+        container_name: "learn-graphql-db"
+        image: postgres
         restart: unless-stopped
         ports:
-          - "5432:5432"
-
-    server:
-        build: .
+            - "5432:5432"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=learn-graphql
+        volumes:
+            - ./postgres_data:/var/lib/postgresql/data
+    api:
+        container_name: "learn-graphql-api"
+        build:
+            context: .
+            dockerfile: ./learn-graphql/api/Dockerfile
         depends_on:
             - "db"
         ports:
             - "9000:9000"
         volumes:
-            - .:/usr/src/apollo-api
-        links:
-            - db:db
+            - ./api:/learn-graphql/api
+            - /api/node_modules # Anonymous volume for node_modules, prevents it from being blown out during build -> run
         restart: unless-stopped
+        
+    ui:
+        container_name: "learn-graphql-ui"
+        build: 
+            context: ./ui
+            dockerfile: Dockerfile
+        volumes:
+            - ./ui:/learn-graphql/ui
+            - ./ui/node_modules
+        ports:
+            - "3000:3000"

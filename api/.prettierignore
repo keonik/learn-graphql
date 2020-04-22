@@ -1,0 +1,5 @@
+*.sql
+Dockerfile
+*.yml
+*.yaml
+*.tpl

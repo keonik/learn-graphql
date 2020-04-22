@@ -2,7 +2,6 @@ import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import { Book } from 'models/Book';
 import { CreateBookInput } from '../inputs/CreateBookInput';
 import { UpdateBookInput } from '../inputs/UpdateBookInput';
-import { BookGenres } from 'models/BookGenres';
 
 @Resolver()
 export class BookResolver {

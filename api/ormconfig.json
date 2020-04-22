@@ -1,0 +1,21 @@
+{
+    "type": "postgres",
+    "port": 5432,
+    "synchronize": true,
+    "logging": true,
+    "host": "learn-graphql-db",
+    "database": "learn-graphql",
+    "username": "postgres",
+    "password": "password",
+    "entities": ["src/models/*.ts"],
+    "migrations": ["src/migrations/**/*.ts"],
+    "subscribers": ["src/subscriber/**/*.ts"],
+    "seeds": ["src/seeders/*.ts"],
+    "factories": ["src/factories/*.ts"],
+    "cli": {
+        "entitiesDir": "src/models/",
+        "migrationsDir": "src/migrations/",
+        "seedsDir": "src/seeders/",
+        "factoriesDir": "src/factories/"
+    }
+}

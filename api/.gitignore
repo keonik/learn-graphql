@@ -1,5 +1,7 @@
 # Dependencies
 /node_modules
+
+# Database volume
 /postgres_data
 
 # Misc

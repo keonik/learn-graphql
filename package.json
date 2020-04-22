@@ -1,58 +1,36 @@
 {
-    "name": "graphql-api",
-    "version": "0.0.1",
-    "description": "Template for creating an API with NodeJS, Apollo Server, and TypeORM",
-    "scripts": {
-        "docs": "reveal-md slides.md --theme moon",
-        "docs:build": "reveal-md slides.md --static docs --disable-auto-open --theme moon && reveal-md slides.md --disable-auto-open --theme moon --print slides.pdf && cp slides.pdf docs/.",
-        "format": "prettier --write 'src/**/*' && eslint --fix src",
-        "lint": "eslint src/**/* --quiet",
-        "security": "npm audit & npm outdated & depcheck --ignores='lint-staged,pretty-quick,husky,nodemon,ts-node,typescript'",
-        "start": "nodemon -w src --ext ts --exec ts-node -r tsconfig-paths/register src/index.ts",
-        "test": "echo \"Error: no test specified\" && exit 0",
-        "release": "standard-version"
-    },
-    "author": "",
-    "license": "MIT",
+    "name": "learn-graphql",
+    "version": "0.1.0",
+    "description": "learning graphql repo",
+    "main": "index.js",
     "dependencies": {
-        "apollo-server": "^2.10.0",
-        "dataloader": "^2.0.0",
-        "pg": "^7.18.1",
-        "reflect-metadata": "^0.1.13",
-        "type-graphql": "^0.17.6",
-        "typeorm": "^0.2.22"
+        "apollo-boost": "^0.4.7",
+        "graphql": "^15.0.0",
+        "reveal-md": "^3.4.7"
     },
-    "devDependencies": {
-        "depcheck": "^0.9.2",
-        "eslint": "^6.8.0",
-        "eslint-config-prettier": "^6.10.0",
-        "eslint-plugin-import": "^2.20.1",
-        "eslint-plugin-prettier": "^3.1.2",
-        "husky": "^4.2.3",
-        "lint-staged": "^10.0.7",
-        "nodemon": "^2.0.2",
-        "prettier": "^1.19.1",
-        "pretty-quick": "^2.0.1",
-        "reveal-md": "^3.4.6",
-        "standard-version": "^7.1.0",
-        "ts-node": "^8.6.2",
-        "tsconfig-paths": "^3.9.0",
-        "typescript": "^3.7.5"
+    "devDependencies": {},
+    "scripts": {
+        "docs": "reveal-md ./slides.md --theme moon",
+        "docs:build": "reveal-md slides.md --static docs --disable-auto-open --theme moon && reveal-md slides.md --disable-auto-open --theme moon --print slides.pdf && cp slides.pdf docs/.",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/keonik/learn-graphql.git"
     },
-    "lint-staged": {
-        "*.{js,jsx,scss,sass}": [
-            "pretty-quick --staged",
-            "npm run format",
-            "git add"
-        ],
-        "*.{json,css,md}": [
-            "pretty-quick --staged",
-            "git add"
-        ]
-    }
+    "keywords": [
+        "graphql",
+        "react",
+        "apollo",
+        "typescript",
+        "typeorm",
+        "postgres",
+        "type-graphql"
+    ],
+    "author": "John Fay",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/keonik/learn-graphql/issues"
+    },
+    "homepage": "https://github.com/keonik/learn-graphql#readme"
 }
