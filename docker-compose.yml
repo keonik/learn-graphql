@@ -28,6 +28,7 @@ services:
         restart: unless-stopped
         
     ui:
+        stdin_open: true
         container_name: "learn-graphql-ui"
         restart: unless-stopped
         depends_on: 
