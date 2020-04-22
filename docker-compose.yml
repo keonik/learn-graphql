@@ -17,7 +17,7 @@ services:
         container_name: "learn-graphql-api"
         build:
             context: .
-            dockerfile: ./learn-graphql/api/Dockerfile
+            dockerfile: ./api/Dockerfile
         depends_on:
             - "db"
         ports:
@@ -29,9 +29,13 @@ services:
         
     ui:
         container_name: "learn-graphql-ui"
+        restart: unless-stopped
+        depends_on: 
+            - "db"
+            - "api"
         build: 
             context: ./ui
-            dockerfile: Dockerfile
+            dockerfile: ./ui/Dockerfile
         volumes:
             - ./ui:/learn-graphql/ui
             - /ui/node_modules

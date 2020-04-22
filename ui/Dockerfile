@@ -6,7 +6,5 @@ COPY . /learn-graphql/ui
 
 RUN npm install
 
-EXPOSE 3000
-
 # Start an apollo server at port 3000
 CMD npm start

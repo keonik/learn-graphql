@@ -13,9 +13,13 @@ revealOptions:
 `keonik.github.io/learn-graphql`
 
 ```
-npx create-react-app gql-demo
+git clone git@github.com:keonik/learn-graphql.git
 
-npm install apollo-boost graphql @apollo/react-hooks
+cd learn-graphql
+
+make up
+
+make database-init
 ```
 
 Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/learn-graphql.git` 4. `cd learn-graphql` 5. `npm install` 6. `docker-compose up`
@@ -37,6 +41,7 @@ Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/lea
 ---
 
 <section>
+<img src="https://github.com/keonik/learn-graphql/blob/master/assets/embarassing-author.jpeg" height="400">
     <h2>About me</h2>
     -   5 months of GraphQL exposure
     <br/>
@@ -124,7 +129,9 @@ Note: - REST works - scalable - well known
 
 ## [State of js 2019](https://2019.stateofjs.com/data-layer/graphql/)
 
----
+Note: How it will help you at Mile Two? We're starting to use this
+
+## Professionally: it's taking over. Lots of companies are switching to this architecture so it will continue to become a lucrative skill to understand in the future
 
 ## Quick Explanation of the structure
 
