@@ -12,7 +12,7 @@
     "scripts": {
         "docs": "reveal-md ./slides.md --theme moon",
         "docs:build": "reveal-md slides.md --static docs --disable-auto-open --theme moon && reveal-md slides.md --disable-auto-open --theme moon --print slides.pdf && cp slides.pdf docs/.",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo no tests"
     },
     "repository": {
         "type": "git",
