@@ -7,7 +7,7 @@ export default class SeedGenres implements Seeder {
         await connection.createQueryBuilder().delete().from(Book);
         await connection.createQueryBuilder().delete().from(Genre);
 
-        let seededBooks = await factory(Book)().seedMany(100);
-        await factory(Genre)({ books: seededBooks }).seedMany(100);
+        let seededBooks = await factory(Book)().seedMany(5);
+        await factory(Genre)({ books: seededBooks }).seedMany(10);
     }
 }

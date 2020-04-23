@@ -33,15 +33,12 @@ Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/lea
 -   (Cons) What issues does it cause?
 -   How will it help Mile Two
 -   How it will help your professional development
--   Example
-    -   Tools
-        -   What
-        -   Why
+-   Demo
 
 ---
 
 <section>
-<img src="https://github.com/keonik/learn-graphql/blob/master/assets/embarassing-author.jpeg" height="400">
+<img src="https://raw.githubusercontent.com/keonik/learn-graphql/master/assets/embarassing-author.jpeg" height="400">
     <h2>About me</h2>
     -   5 months of GraphQL exposure
     <br/>
@@ -56,84 +53,203 @@ Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/lea
 
 ---
 
-### What is Graphql?
+<section>
+<div style="display: flex; justify-content: center; align-items: center;">
+    <h2>What is GraphQL?</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1200px-GraphQL_Logo.svg.png" height="100" style="border: none; padding-left: 10px"/>
+</div>
 
-A query language for your API
+<div style=" display: flex; align-items: center; flex-direction: column;">
+    <div style="display: flex; align-items: center; ">
+        Made by 
+        <img src="https://www.facebook.com/images/fb_icon_325x325.png" height=40  style="margin: 0 10px; border: none;"/> 
+    </div>
+    <div style="display: flex; align-items: center; ">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" height=30 style="border: none;"/>React
+    </div>
+    <div style="display: flex; align-items: center; ">
+        <img src="https://engineering.fb.com/wp-content/uploads/2017/04/gni6bqhilcfi2suaaaaaaaafcizpbj0jaaab.jpg" height=30 style="border: none;"/>Relay
+    </div>
+</div>
 
-[View the docs for yourself](https://graphql.org/)
+<img src="https://miro.medium.com/max/1358/0*CvbyACt1l2JKnbLZ.png" height=100 style="border: none;"/>
 
-Note: But first reference example
+<div>
+<a href="https://graphql.org/">A query language for your API</a>
+
+</div>
+
+Note: Open Source Public release 2015
+
+Multi language support
+
+One liner is...
+
+"Which means you have a complete and understandable description of the data in your API giving the clients the power to ask for what they want and nothing more."
+
+</section>
 
 ---
 
-<img src="https://cdn-media-1.freecodecamp.org/images/kc0xvmMmSaF46CcliELfM8B78hev9NT3QkDG" height="550"/>
+<!-- <img src="https://cdn-media-1.freecodecamp.org/images/kc0xvmMmSaF46CcliELfM8B78hev9NT3QkDG" height="550"/> -->
 
 ## Problem
 
+<section>
+    GET /genres
+
+```
+[
+    {
+        name: 'Mystery'
+    },
+    {
+        name: 'Romance'
+    }
+]
+```
+
+</section>
+<section>
+
+```
+[
+    {
+        name: 'Mystery'
+        books: [
+            {
+                title: 'The lost man',
+                author: 'Jane Harper'
+            },
+            {
+                title: 'And then there were none'
+                author: 'Agatha Christie'
+            }
+        ]
+    },
+]
+```
+
 Note:
 
-Common Facebook problem
+book genres
 
-data on left - preview of frontend on right
+but we also need to get books
 
-Start with REST endpoint /posts to get an array of posts
+typical to fetch them separately but if you can you would like to get it done in one request
 
-But now you need user data to get this
+so you tweak it to include books
 
-So you tweak the posts endpoint to include likes containing user objects
+Now anytime you fetch genres you get books with it which on mobile it becomes an issue of overfetching data
 
-This is normal in the REST architecture
-
-...But wait, here comes mobile: problems: extra data ==> slowing things down
-
--   two endpoints
-    -   with likes
-    -   without likes
-
-Even though this is a simple example even Good REST API's starting to show their limits
+</section>
 
 ---
 
-### What is Graphql?
-
-A query language for your API
-
-[View the docs for yourself](https://graphql.org/)
-
+<section>
+<h4>Describe your data</h4>
+    <pre>
+        <code>
+    type Genre {
+        name: String
+        books: [Book]
+    }
+        </code>
+    </pre>
+</section>
+<section>
+<h4>Ask for what you want</h4>
+    <pre>
+        <code>
+    genre(name: "Mystery"){
+        name
+        books{
+            title
+            author
+        }
+    }
+        </code>
+    </pre>
+</section>
+<section>
+<h4>Get predictable results</h4>
+    <pre>
+        <code>
+            genre{
+                name: 'Mystery'
+                books: [
+                    {
+                        title: 'The lost man',
+                        author: 'Jane Harper'
+                    },
+                    {
+                        title: 'And then there were none'
+                        author: 'Agatha Christie'
+                    }
+                ]
+            }
+        </code>
+    </pre>
+</section>
 ---
 
 # What does it solve?
 
--   Instead of having multiple "simple" endpoints, we have one "smart" endpoint that can take complex queries and turn it into what the client needs
--   Having an assistant for your data
-    -   groceries
-    -   pizza
-    -   dry cleaning
+-   Client driven instead of server driven
+
+-   Development speed improvements
+
+-   Self documenting
+
+-   Single trip data fetching
+
+Note:
+
+Instead of having multiple "dumb" endpoints, we have one "smart" endpoint that can take complex queries and turn it into what the client needs
+
+Also Frontend development is a breeze and requires less interactions with backend team to get what they need
+
+Overfetching and underfetching data
 
 ---
 
 ## What issues does it cause?
 
--   Superfluous Database Calls (N+1 problem go into more detail on n+1)
-    -   Solution: dataloader batching/caching
--   All this relation ability causes performance issues
-    -   query caching
--   Everything is a POST...
-    -   not taking advantage of http methods and their features
+-   Superfluous Database Calls `N+1`
 
-Note: - REST works - scalable - well known
+    -   Solution: dataloader
+
+-   Overkill for small applications
+
+    -   Ensure you would benefit from it. More emphasis on frontend development.
+
+-   Time to relearn another thing even though REST works
+
+Note: Go into detail on N+1 with genres and books
+
+-   REST works
+    -   scalable
+    -   well known
 
 ---
 
-# What are the people saying?
+## What are the people saying?
 
-## [State of js 2019](https://2019.stateofjs.com/data-layer/graphql/)
+[State of js 2019](https://2019.stateofjs.com/data-layer/graphql/)
+
+## Who's using it in production?
+
+AirBnB, GitHub, PayPal, Lyft, Starbucks, The New York Times, Twitter, Yelp
 
 Note: How it will help you at Mile Two? We're starting to use this
 
-## Professionally: it's taking over. Lots of companies are switching to this architecture so it will continue to become a lucrative skill to understand in the future
+Mobile
 
-## Quick Explanation of the structure
+Spinning up quickly and not needing to spend as much time building infrastructure around a clean and simple REST api
+
+---
+
+## GraphQL fundamentals
 
 ### Queries
 
@@ -143,14 +259,50 @@ Note: How it will help you at Mile Two? We're starting to use this
 
 ### Mutations
 
-    PUT, POST, DELETE
+    PUT, PATCH, POST, DELETE
 
     useMutation
 
 ---
 
+## Queries
+
+    GET /books
+
+        query {
+            books{
+                ...
+            }
+        }
+
+    GET /book/1
+
+        query {
+            book(id: 1) {
+                ...
+            }
+        }
+
+---
+
+## Mutations
+
+    POST book?name=Storyteller
+
+        mutation {
+            createBook(
+                {
+                    name: 'Storyteller'
+                }
+            ){
+                ... what you want to return
+            }
+        }
+
+---
+
 <section data-background-image="https://media0.giphy.com/media/pUs87dXYIIrTy/source.gif">
-	<h3>Now lets show that awesome frontend DX(Developer Experience)</h3>
+<h3>Now lets show that awesome frontend DX(Developer Experience)</h3>
 </section>
 
 ---
@@ -158,8 +310,9 @@ Note: How it will help you at Mile Two? We're starting to use this
 ### Things you'll need
 
 ```
-npx create-react-app gql-demo
+
 npm install apollo-boost graphql @apollo/react-hooks
+
 ```
 
 ###### apollo-boost - Zero config apollo client
@@ -169,14 +322,16 @@ npm install apollo-boost graphql @apollo/react-hooks
 ##### graphql - Write queries like so:
 
 ```
+
 gql`
     query{
         users(id: 1){
-            id
-            name
+             id
+             name
         }
     }
 `
+
 ```
 
 ---
