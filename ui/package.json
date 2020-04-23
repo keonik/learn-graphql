@@ -16,6 +16,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^6.0.0-alpha.3",
+    "react-router-dom": "^6.0.0-alpha.3",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
@@ -39,5 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
