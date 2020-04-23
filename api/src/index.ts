@@ -7,7 +7,6 @@ import { BookResolver } from 'resolvers/BookResolver';
 import { GenreResolver } from 'resolvers/GenreResolver';
 
 export const PORT = 9000;
-export const path = '/api';
 
 async function serve(): Promise<void> {
     await createConnection();
@@ -17,7 +16,7 @@ async function serve(): Promise<void> {
     const schema = await buildSchema({ resolvers: [BookResolver, GenreResolver] });
 
     const server = new ApolloServer({ schema });
-    server.applyMiddleware({ app, path });
+    server.applyMiddleware({ app });
 
     app.listen({ port: PORT, host: '0.0.0.0' }, () =>
         console.log(`🚀 Server ready at http://0.0.0.0:${PORT}${server.graphqlPath}`)

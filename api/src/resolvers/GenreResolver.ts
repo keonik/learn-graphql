@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import { Genre } from 'models/Genre';
 import { CreateGenreInput } from 'inputs/CreateGenreInput';
-import { UpdateBookInput } from 'inputs/UpdateBookInput';
+import { UpdateGenreInput } from 'inputs/UpdateGenreInput';
 
 @Resolver()
 export class GenreResolver {
@@ -23,7 +23,7 @@ export class GenreResolver {
     }
 
     @Mutation(() => Genre)
-    async updateGenre(@Arg('id') id: string, data: UpdateBookInput) {
+    async updateGenre(@Arg('id') id: string, @Arg('data') data: UpdateGenreInput) {
         const genre = Genre.findOne({ where: { id } });
         if (!genre) throw new Error('Genre not found!');
         Object.assign(genre, data);
