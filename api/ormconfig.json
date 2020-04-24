@@ -1,7 +1,7 @@
 {
     "type": "postgres",
     "port": 5432,
-    "synchronize": true,
+    "synchronize": false,
     "logging": true,
     "host": "learn-graphql-db",
     "database": "learn-graphql",

@@ -36,7 +36,6 @@ services:
             - "api"
         build: 
             context: ./ui
-            dockerfile: ./ui/Dockerfile
         volumes:
             - ./ui:/learn-graphql/ui
             - /ui/node_modules

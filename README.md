@@ -6,8 +6,14 @@ Template project used to learn how to create an API with NodeJS, Apollo Server, 
 
 ## Getting Started
 
--   Run `npm install` to get all development dependencies
+### Prerequisites
 
--   Run `docker-compose up` to run database and api
+-   Docker
+-   Node
 
--   Go to http://localhost:9000 and see the graphql playground to test queries and mutations
+### Running
+
+-   Run `make up` to get all development dependencies and startup your database, api and frontend
+-   Run `make database-init` to initialize some sample data
+-   Go to http://localhost:9000/graphql and see the graphql playground to test queries and mutations
+-   Go to http://localhost:3000 and see the frontend application
