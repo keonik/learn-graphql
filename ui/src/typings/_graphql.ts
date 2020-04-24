@@ -51,6 +51,33 @@ export interface CreateBookVariables {
 // @generated
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: UpdateBook
+// ====================================================
+
+export interface UpdateBookUpdateBook {
+  readonly id: string;
+  readonly title: string;
+  readonly author: string;
+  readonly description: string;
+}
+
+export interface UpdateBook {
+  readonly updateBook: UpdateBookUpdateBook;
+}
+
+export interface UpdateBookVariables {
+  readonly id: string;
+  readonly title?: string | null;
+  readonly author?: string | null;
+  readonly description?: string | null;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// @generated
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
