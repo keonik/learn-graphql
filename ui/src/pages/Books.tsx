@@ -112,7 +112,14 @@ export default function Books({}: Props): ReactElement {
                     );
                 })}
             </div>
-            <Drawer visible={open} width={500} onClose={() => setOpen(false)}>
+            <Drawer
+                visible={open}
+                width={500}
+                onClose={() => {
+                    setOpen(false);
+                    setSelectedBook(undefined);
+                }}
+            >
                 {open && (
                     <>
                         <h2>Create Book</h2>
