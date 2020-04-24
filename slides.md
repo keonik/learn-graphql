@@ -12,16 +12,6 @@ revealOptions:
 
 `keonik.github.io/learn-graphql`
 
-```
-git clone git@github.com:keonik/learn-graphql.git
-
-cd learn-graphql
-
-make up
-
-make database-init
-```
-
 Note: 1. Have docker :| 2. Open terminal 3. `git clone git@github.com:keonik/learn-graphql.git` 4. `cd learn-graphql` 5. `npm install` 6. `docker-compose up`
 
 ---

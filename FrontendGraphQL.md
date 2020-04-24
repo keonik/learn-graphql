@@ -39,9 +39,12 @@ Comes with pages genres, books, book, genre
 
 What we are going to build are the pages for Genres and Books
 
-5.  First we need to open `App.tsx` and create a client
+5.  First we need to open `App.tsx`, import `ApolloClient` and `ApolloProvider`, and create a client
 
 ```tsx
+import { ApolloProvider } from '@apollo/react-hooks'
+import ApolloClient from 'apollo-boost'
+
 const client = new ApolloClient({
     uri: 'http://localhost:9000/graphql'
 })
@@ -245,4 +248,10 @@ Now you should have typesafe completion for your query! Woohoo!
 
 ## Mutation Time!
 
-WIP!
+1. `git checkout book-mutations`
+
+2. Open `pages/Books.tsx`
+
+3. View example create mutation
+    - Notice refetch queries compared to how you'd typically manage the data in REST. This refetch is the same as updating the data yourself
+    - If you were to be updating an existing Book you wouldn't need to do this manually. You would just ensure the id of the book you updated is returned

@@ -9,5 +9,5 @@ export class UpdateBookInput {
     author?: string;
 
     @Field({ nullable: true })
-    isPublished?: boolean;
+    description?: string;
 }

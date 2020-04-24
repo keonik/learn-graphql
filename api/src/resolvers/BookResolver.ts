@@ -23,7 +23,7 @@ export class BookResolver {
         return book;
     }
     @Mutation(() => Book)
-    async updateBook(@Arg('id') id: string, data: UpdateBookInput) {
+    async updateBook(@Arg('id') id: string, @Arg('data') data: UpdateBookInput) {
         const book = await Book.findOne({ where: { id } });
         if (!book) throw new Error('Book not found!');
         Object.assign(book, data);
