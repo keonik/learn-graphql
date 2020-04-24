@@ -15,8 +15,6 @@ const QUERY_GENRES = gql`
     }
 `;
 
-const UPDATE_GENRE = gql``;
-
 interface Props {}
 
 export default function Genres({}: Props): ReactElement {
