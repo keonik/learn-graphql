@@ -1,0 +1,19 @@
+.Books {
+    display: flex;
+    flex-direction: row;
+}
+
+.Book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: 0.5em;
+    padding: 0.5em;
+    background: #2f2f2f;
+    width: 250px;
+}
+
+.Book:hover {
+    background: #3f3f3f;
+}
